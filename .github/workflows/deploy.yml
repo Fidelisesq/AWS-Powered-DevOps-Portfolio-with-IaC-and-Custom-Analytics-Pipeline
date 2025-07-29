@@ -68,6 +68,8 @@ jobs:
           --exclude ".git/*" \
           --exclude ".github/*" \
           --exclude "*.md" \
+          --exclude "*.gitignore" \
+          --exclude "copy-index.html." \
           --delete
     
     - name: Invalidate CloudFront

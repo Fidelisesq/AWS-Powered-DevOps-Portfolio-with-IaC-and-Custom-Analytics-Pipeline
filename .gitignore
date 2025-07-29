@@ -8,3 +8,4 @@ terraform.tfvars
 # Local files
 .DS_Store
 Thumbs.db
+copy-index.html
