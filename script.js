@@ -65,35 +65,8 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Update project and blog links
+// Update social links only
 function updateLinks() {
-    // Update project links with your actual GitHub/GitLab URLs
-    const projectLinks = document.querySelectorAll('.project-link');
-    const projectUrls = [
-        'https://github.com/yourusername/infrastructure-automation',
-        'https://github.com/yourusername/cicd-pipeline',
-        'https://github.com/yourusername/kubernetes-cluster'
-    ];
-    
-    projectLinks.forEach((link, index) => {
-        if (projectUrls[index]) {
-            link.href = projectUrls[index];
-        }
-    });
-    
-    // Update blog links with your actual blog URLs
-    const blogLinks = document.querySelectorAll('.blog-link');
-    const blogUrls = [
-        'https://yourblog.com/aws-cost-optimization',
-        'https://yourblog.com/resilient-cicd-pipelines'
-    ];
-    
-    blogLinks.forEach((link, index) => {
-        if (blogUrls[index]) {
-            link.href = blogUrls[index];
-        }
-    });
-    
     // Update social links
     const socialLinks = document.querySelectorAll('.social-link');
     const socialUrls = [
@@ -155,4 +128,13 @@ window.addEventListener('load', () => {
 });
 
 // Initialize links when page loads
-document.addEventListener('DOMContentLoaded', updateLinks);
+document.addEventListener('DOMContentLoaded', function() {
+    updateLinks();
+    
+    // Ensure project links are not modified by any other code
+    const projectLinks = document.querySelectorAll('.project-link');
+    projectLinks.forEach(link => {
+        // Preserve the original href attribute
+        link.setAttribute('data-original-href', link.href);
+    });
+});
