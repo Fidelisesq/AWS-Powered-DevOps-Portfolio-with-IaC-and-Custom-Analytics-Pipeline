@@ -1,6 +1,7 @@
 variable "domain_name" {
   description = "The domain name for the website"
   type        = string
+  default  = "fidelis.fozdigitalz.com"
 }
 
 variable "bucket_name" {
@@ -9,14 +10,13 @@ variable "bucket_name" {
   default     = "portfolio-site-bucket"
 }
 
-variable "certificate_domain" {
-  description = "Domain pattern for SSL certificate"
+variable "certificate_arn" {
+  description = "ARN of the SSL certificate"
   type        = string
-  default     = "fozdigitalz.com"
 }
 
-variable "hosted_zone_name" {
-  description = "Route53 hosted zone name"
+variable "hosted_zone_id" {
+  description = "Route53 hosted zone ID"
   type        = string
 }
 

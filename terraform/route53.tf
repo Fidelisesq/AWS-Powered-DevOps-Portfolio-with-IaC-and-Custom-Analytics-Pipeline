@@ -1,9 +1,5 @@
-data "aws_route53_zone" "main" {
-  name = var.hosted_zone_name
-}
-
 resource "aws_route53_record" "website" {
-  zone_id = data.aws_route53_zone.main.zone_id
+  zone_id = var.hosted_zone_id
   name    = var.domain_name
   type    = "A"
 
