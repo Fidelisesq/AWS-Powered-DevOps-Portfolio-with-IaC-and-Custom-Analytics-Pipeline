@@ -6,6 +6,7 @@ variable "domain_name" {
 variable "bucket_name" {
   description = "S3 bucket name for website hosting"
   type        = string
+  default     = "portfolio-site-bucket"
 }
 
 variable "certificate_domain" {
