@@ -65,22 +65,7 @@ window.addEventListener('scroll', function() {
     }
 });
 
-// Update social links only
-function updateLinks() {
-    // Update social links
-    const socialLinks = document.querySelectorAll('.social-link');
-    const socialUrls = [
-        'https://www.linkedin.com/in/fidelis-ikoroje/',
-        'https://github.com/Fidelisesq',
-        'https://www.youtube.com/@Fidelisesq'
-    ];
-    
-    socialLinks.forEach((link, index) => {
-        if (socialUrls[index]) {
-            link.href = socialUrls[index];
-        }
-    });
-}
+// Social links are now hardcoded in HTML - no JavaScript needed
 
 // Scroll animations
 function animateOnScroll() {
@@ -126,10 +111,8 @@ window.addEventListener('load', () => {
     }
 });
 
-// Initialize links when page loads
+// Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
-    updateLinks();
-    
     // Ensure project links are not modified by any other code
     const projectLinks = document.querySelectorAll('.project-link');
     projectLinks.forEach(link => {
