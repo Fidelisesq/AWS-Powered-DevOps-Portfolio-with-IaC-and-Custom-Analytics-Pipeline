@@ -70,9 +70,8 @@ function updateLinks() {
     // Update social links
     const socialLinks = document.querySelectorAll('.social-link');
     const socialUrls = [
-        'https://linkedin.com/in/fidelis-ikoroje',
+        'https://www.linkedin.com/in/fidelis-ikoroje/',
         'https://github.com/Fidelisesq',
-        'https://twitter.com/fidelisesq',
         'https://www.youtube.com/@Fidelisesq'
     ];
     
