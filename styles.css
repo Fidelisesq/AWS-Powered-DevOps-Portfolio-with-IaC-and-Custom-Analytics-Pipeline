@@ -61,8 +61,8 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('aws-community-builder-banner-800px.png');
-    background-size: cover, auto 60%;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.95) 0%, rgba(118, 75, 162, 0.95) 100%), url('aws-community-builder-banner-800px.png');
+    background-size: cover, auto 30%;
     background-position: center, bottom right;
     background-repeat: no-repeat, no-repeat;
     color: white;
@@ -70,6 +70,13 @@ body {
     text-align: center;
     position: relative;
     overflow: hidden;
+}
+
+@media (max-width: 768px) {
+    .hero {
+        background-size: cover, auto 20%;
+        background-position: center, bottom center;
+    }
 }
 
 .hero::before {
