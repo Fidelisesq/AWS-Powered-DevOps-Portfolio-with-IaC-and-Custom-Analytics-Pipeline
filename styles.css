@@ -61,11 +61,10 @@ body {
 
 /* Hero Section */
 .hero {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%), url('aws-community-builder-banner.png');
-    background-size: cover, contain;
-    background-position: center, center;
+    background: linear-gradient(135deg, rgba(102, 126, 234, 0.9) 0%, rgba(118, 75, 162, 0.9) 100%), url('aws-community-builder-banner-800px.png');
+    background-size: cover, auto 60%;
+    background-position: center, bottom right;
     background-repeat: no-repeat, no-repeat;
-    background-blend-mode: overlay;
     color: white;
     padding: 150px 0 100px;
     text-align: center;
