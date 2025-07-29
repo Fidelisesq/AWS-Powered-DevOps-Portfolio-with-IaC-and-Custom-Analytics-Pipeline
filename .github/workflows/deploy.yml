@@ -1,0 +1,105 @@
+name: Deploy Personal Website
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      action:
+        description: 'Action to perform'
+        required: true
+        default: 'deploy'
+        type: choice
+        options:
+          - deploy
+          - destroy
+
+env:
+  AWS_REGION: us-east-1
+  TF_VERSION: 1.6.0
+
+jobs:
+  deploy:
+    if: ${{ !contains(github.event.head_commit.message, 'destroy') && (github.event_name == 'push' || github.event.inputs.action == 'deploy') }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+    
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ./terraform
+    
+    - name: Terraform Plan
+      run: terraform plan
+      working-directory: ./terraform
+    
+    - name: Terraform Apply
+      run: terraform apply -auto-approve
+      working-directory: ./terraform
+    
+    - name: Upload website files
+      run: |
+        BUCKET=$(terraform output -raw s3_bucket)
+        aws s3 sync . s3://$BUCKET \
+          --exclude "terraform/*" \
+          --exclude "docs/*" \
+          --exclude ".terraform/*" \
+          --exclude ".git/*" \
+          --exclude ".github/*" \
+          --exclude "*.md" \
+          --delete
+      working-directory: ./
+    
+    - name: Invalidate CloudFront
+      run: |
+        DISTRIBUTION_ID=$(terraform output -raw cloudfront_distribution_id)
+        aws cloudfront create-invalidation \
+          --distribution-id $DISTRIBUTION_ID \
+          --paths "/*"
+      working-directory: ./terraform
+
+  destroy:
+    if: ${{ contains(github.event.head_commit.message, 'destroy') || github.event.inputs.action == 'destroy' }}
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v4
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ env.AWS_REGION }}
+    
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      with:
+        terraform_version: ${{ env.TF_VERSION }}
+    
+    - name: Terraform Init
+      run: terraform init
+      working-directory: ./terraform
+    
+    - name: Empty S3 bucket
+      run: |
+        BUCKET=$(terraform output -raw s3_bucket 2>/dev/null || echo "portfolio-site-bucket")
+        aws s3 rm s3://$BUCKET --recursive || true
+      working-directory: ./terraform
+    
+    - name: Terraform Destroy
+      run: terraform destroy -auto-approve
+      working-directory: ./terraform
