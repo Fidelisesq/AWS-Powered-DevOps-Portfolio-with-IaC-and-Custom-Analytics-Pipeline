@@ -58,7 +58,9 @@ jobs:
     
     - name: Upload website files
       run: |
+        cd terraform
         BUCKET=$(terraform output -raw s3_bucket)
+        cd ..
         aws s3 sync . s3://$BUCKET \
           --exclude "terraform/*" \
           --exclude "docs/*" \
@@ -67,7 +69,6 @@ jobs:
           --exclude ".github/*" \
           --exclude "*.md" \
           --delete
-      working-directory: ./
     
     - name: Invalidate CloudFront
       run: |
