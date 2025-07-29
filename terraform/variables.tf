@@ -12,6 +12,7 @@ variable "bucket_name" {
 variable "certificate_domain" {
   description = "Domain pattern for SSL certificate"
   type        = string
+  default     = "fozdigitalz.com"
 }
 
 variable "hosted_zone_name" {
