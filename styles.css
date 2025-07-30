@@ -420,6 +420,13 @@ section h2 {
     background: #2d2d2d;
 }
 
+.blog-card {
+    background: #404040;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
 .blog-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
@@ -434,7 +441,7 @@ section h2 {
 }
 
 .blog-card h3 {
-    color: #2c3e50;
+    color: #1e88e5;
     margin-bottom: 0.5rem;
 }
 
@@ -456,7 +463,7 @@ section h2 {
 }
 
 .blog-card p {
-    color: #666;
+    color: #ffffff;
     margin-bottom: 1.5rem;
 }
 
