@@ -675,6 +675,25 @@ section h2 {
     font-size: 0.9rem;
 }
 
+.cert-badge-btn {
+    background: #87ceeb;
+    color: #1a1a1a;
+    text-decoration: none;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    display: inline-block;
+    transition: all 0.3s ease;
+}
+
+.cert-badge-btn:hover {
+    background: #5dade2;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(135, 206, 235, 0.3);
+}
+
 /* Blog Page Styles */
 .blog-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
