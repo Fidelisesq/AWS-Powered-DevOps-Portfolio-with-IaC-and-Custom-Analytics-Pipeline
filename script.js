@@ -111,8 +111,31 @@ window.addEventListener('load', () => {
     }
 });
 
+// Mobile navigation toggle
+function initMobileNav() {
+    const navToggle = document.getElementById('nav-toggle');
+    const navMenu = document.getElementById('nav-menu');
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', function() {
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        // Close menu when clicking on links
+        navMenu.addEventListener('click', function(e) {
+            if (e.target.tagName === 'A') {
+                navToggle.classList.remove('active');
+                navMenu.classList.remove('active');
+            }
+        });
+    }
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
+    initMobileNav();
+    
     // Ensure project links are not modified by any other code
     const projectLinks = document.querySelectorAll('.project-link');
     projectLinks.forEach(link => {
