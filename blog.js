@@ -69,8 +69,21 @@ function initMobileNav() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
     
+    console.log('Nav toggle:', navToggle);
+    console.log('Nav menu:', navMenu);
+    
     if (navToggle && navMenu) {
-        navToggle.addEventListener('click', function() {
+        // Add both click and touchstart for mobile
+        navToggle.addEventListener('click', function(e) {
+            e.preventDefault();
+            console.log('Toggle clicked');
+            navToggle.classList.toggle('active');
+            navMenu.classList.toggle('active');
+        });
+        
+        navToggle.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            console.log('Toggle touched');
             navToggle.classList.toggle('active');
             navMenu.classList.toggle('active');
         });
@@ -82,6 +95,8 @@ function initMobileNav() {
                 navMenu.classList.remove('active');
             }
         });
+    } else {
+        console.log('Nav elements not found');
     }
 }
 

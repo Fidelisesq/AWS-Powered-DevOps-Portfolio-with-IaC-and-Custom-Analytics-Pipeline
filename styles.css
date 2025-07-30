@@ -972,11 +972,23 @@ section h2 {
     gap: 4px;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+    padding: 10px;
+    -webkit-tap-highlight-color: transparent;
+    user-select: none;
+    z-index: 1001;
+}
+
 .nav-toggle span {
     width: 25px;
     height: 3px;
     background: #404040;
     transition: 0.3s;
+    pointer-events: none;
 }
 
 .nav-toggle.active span:nth-child(1) {
