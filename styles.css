@@ -252,6 +252,9 @@ section h2 {
     font-weight: 500;
     transition: all 0.3s ease;
     cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
 }
 
 .animate-tag {
