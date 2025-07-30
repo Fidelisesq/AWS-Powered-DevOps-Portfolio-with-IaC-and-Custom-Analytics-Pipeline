@@ -1013,11 +1013,16 @@ section h2 {
         padding: 1rem;
     }
     
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+@media (max-width: 768px) {
     .nav-toggle {
         display: flex;
-        flex-direction: column;
-        cursor: pointer;
-        gap: 4px;
     }
     
     .nav-toggle span {
