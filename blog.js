@@ -54,6 +54,7 @@ function createArticleCard(article) {
             <div class="blog-post-stats">
                 <span><i class="fas fa-heart"></i> ${article.public_reactions_count}</span>
                 <span><i class="fas fa-comment"></i> ${article.comments_count}</span>
+                <span><i class="fas fa-clock"></i> ${article.reading_time_minutes} min read</span>
             </div>
             <a href="${article.url}" class="blog-post-link" target="_blank">
                 Read on Dev.to <i class="fas fa-external-link-alt"></i>
