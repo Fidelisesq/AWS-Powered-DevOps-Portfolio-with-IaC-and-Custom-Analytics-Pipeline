@@ -965,6 +965,32 @@ section h2 {
     padding: 2rem;
 }
 
+.nav-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 4px;
+}
+
+.nav-toggle span {
+    width: 25px;
+    height: 3px;
+    background: #404040;
+    transition: 0.3s;
+}
+
+.nav-toggle.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.nav-toggle.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(7px, -6px);
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .builder-content {
@@ -982,6 +1008,14 @@ section h2 {
     
     .nav-container {
         position: relative;
+    }
+    
+    .nav-toggle {
+        display: flex;
+    }
+    
+    .nav-toggle {
+        display: flex;
     }
     
     .nav-menu {
