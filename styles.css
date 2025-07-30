@@ -965,6 +965,89 @@ section h2 {
     padding: 2rem;
 }
 
+/* About Page Styles */
+.about-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.about-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.about-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.about-content {
+    padding: 80px 0;
+    background: #2d2d2d;
+}
+
+.about-story {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+.about-story p {
+    margin-bottom: 1.5rem;
+    font-size: 1.1rem;
+}
+
+.about-story h3 {
+    color: #1e88e5;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.3rem;
+}
+
+.experience-list {
+    margin: 1.5rem 0;
+    padding-left: 1.5rem;
+}
+
+.experience-list li {
+    margin-bottom: 0.8rem;
+    color: #d0d0d0;
+}
+
+.connect-links {
+    margin-top: 3rem;
+    text-align: center;
+}
+
+.social-connect {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+    flex-wrap: wrap;
+}
+
+.connect-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 24px;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+}
+
+.connect-link:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
 .nav-toggle {
     display: none;
     flex-direction: column;
