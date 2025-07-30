@@ -1071,6 +1071,53 @@ section h2 {
     transform: translateY(-2px);
 }
 
+/* Privacy Policy Styles */
+.privacy-content {
+    max-width: 800px;
+    margin: 0 auto;
+    color: #e0e0e0;
+    line-height: 1.8;
+}
+
+.privacy-summary h2 {
+    color: #1e88e5;
+    margin: 2rem 0 1rem 0;
+    font-size: 1.5rem;
+}
+
+.privacy-summary h3 {
+    color: #3498db;
+    margin: 1.5rem 0 0.5rem 0;
+    font-size: 1.2rem;
+}
+
+.privacy-summary ul {
+    margin: 1rem 0 1.5rem 1.5rem;
+    color: #d0d0d0;
+}
+
+.privacy-summary li {
+    margin-bottom: 0.5rem;
+}
+
+.privacy-summary a {
+    color: #3498db;
+    text-decoration: none;
+}
+
+.privacy-summary a:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.last-updated {
+    margin-top: 2rem;
+    padding-top: 1rem;
+    border-top: 1px solid #404040;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+}
+
 
 
 .nav-toggle {
