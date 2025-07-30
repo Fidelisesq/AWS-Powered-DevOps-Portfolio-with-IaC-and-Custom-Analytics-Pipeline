@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Blog - Fidelis Ikoroje</title>
+    <title>Projects - Fidelis Ikoroje</title>
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
@@ -15,28 +15,28 @@
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
                 <li><a href="index.html#about">About</a></li>
-                <li><a href="projects.html">Projects</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
                 <li><a href="index.html#certifications">Certifications</a></li>
-                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="blog.html">Blog</a></li>
                 <li><a href="index.html#contact">Contact</a></li>
             </ul>
         </div>
     </nav>
 
-    <section class="blog-hero">
+    <section class="projects-hero">
         <div class="container">
-            <h1>My Blog</h1>
-            <p>Technical insights on DevOps, cloud infrastructure, and automation</p>
+            <h1>My Projects</h1>
+            <p>DevOps, cloud infrastructure, and automation projects from my GitHub</p>
         </div>
     </section>
 
-    <section class="blog-content">
+    <section class="projects-content">
         <div class="container">
             <div id="loading" class="loading">
                 <i class="fas fa-spinner fa-spin"></i>
-                <p>Loading articles...</p>
+                <p>Loading projects...</p>
             </div>
-            <div id="blog-posts" class="blog-posts-grid"></div>
+            <div id="github-projects" class="github-projects-grid"></div>
         </div>
     </section>
 
@@ -46,6 +46,6 @@
         </div>
     </footer>
 
-    <script src="blog.js"></script>
+    <script src="projects.js"></script>
 </body>
 </html>

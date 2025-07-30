@@ -807,6 +807,164 @@ section h2 {
     color: #e74c3c;
 }
 
+/* Projects Page Styles */
+.projects-hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 120px 0 80px;
+    text-align: center;
+}
+
+.projects-hero h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.projects-hero p {
+    font-size: 1.2rem;
+    opacity: 0.9;
+}
+
+.projects-content {
+    padding: 80px 0;
+}
+
+.github-projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+.github-project-card {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s ease;
+    border: 1px solid #404040;
+}
+
+.github-project-card:hover {
+    transform: translateY(-5px);
+    border-color: #3498db;
+}
+
+.project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.project-icon {
+    font-size: 1.5rem;
+    color: #3498db;
+}
+
+.project-meta {
+    font-size: 0.9rem;
+    color: #b0b0b0;
+}
+
+.project-title {
+    color: #1e88e5;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+
+.project-description {
+    color: #d0d0d0;
+    margin-bottom: 1rem;
+    line-height: 1.5;
+}
+
+.project-topics {
+    margin-bottom: 1rem;
+}
+
+.project-topic {
+    background: #404040;
+    color: #3498db;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.project-stats {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    align-items: center;
+}
+
+.project-language {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.language-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+}
+
+.project-stat {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.project-link {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 8px 16px;
+    border: 2px solid #3498db;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    font-size: 0.9rem;
+}
+
+.project-link:hover {
+    background: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.project-link.live {
+    background: #27ae60;
+    border-color: #27ae60;
+    color: white;
+}
+
+.project-link.live:hover {
+    background: #219a52;
+    border-color: #219a52;
+}
+
+.no-projects {
+    text-align: center;
+    color: #e0e0e0;
+    font-size: 1.1rem;
+    padding: 2rem;
+}
+
 /* Responsive Design */
 @media (max-width: 768px) {
     .builder-content {
