@@ -985,7 +985,11 @@ section h2 {
 
 .about-content {
     padding: 80px 0;
-    background: #2d2d2d;
+    background: linear-gradient(rgba(45, 45, 45, 0.9), rgba(45, 45, 45, 0.9)), url('aws-community-builder-banner-1200px.png');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
 }
 
 .about-story {
@@ -1048,22 +1052,7 @@ section h2 {
     transform: translateY(-2px);
 }
 
-.aws-community-section {
-    text-align: center;
-    margin: 3rem 0;
-}
 
-.aws-community-banner {
-    max-width: 100%;
-    height: auto;
-    border-radius: 10px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-    transition: transform 0.3s ease;
-}
-
-.aws-community-banner:hover {
-    transform: scale(1.02);
-}
 
 .nav-toggle {
     display: none;
