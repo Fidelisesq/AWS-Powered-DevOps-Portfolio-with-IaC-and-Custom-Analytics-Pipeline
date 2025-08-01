@@ -10,3 +10,14 @@ terraform.tfvars
 Thumbs.db
 copy-index.html
 seo.md
+
+# Security files
+*.key
+*.pem
+*.p12
+*.pfx
+.env
+.env.local
+.env.production
+config.json
+secrets.json
