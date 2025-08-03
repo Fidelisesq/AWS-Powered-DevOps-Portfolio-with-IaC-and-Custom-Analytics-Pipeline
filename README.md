@@ -91,6 +91,19 @@ My deployment is fully automated:
 
 ```
 personal-site/
+├── frontend/                  # Website files
+│   ├── index.html            # Main website file
+│   ├── about.html           # About page
+│   ├── projects.html        # Projects showcase
+│   ├── blog.html           # Blog integration
+│   ├── privacy-policy.html # Privacy policy
+│   ├── styles.css          # CSS styling
+│   ├── script.js           # JavaScript functionality
+│   ├── profile.jpeg        # Profile photo (300x300px)
+│   ├── cv.pdf             # Resume/CV file
+│   ├── robots.txt         # SEO configuration
+│   ├── sitemap.xml        # Site map
+│   └── favicon.svg        # Site icon
 ├── terraform/                 # Infrastructure as Code
 │   ├── main.tf               # Provider and backend configuration
 │   ├── s3.tf                 # S3 bucket for website hosting
@@ -104,16 +117,7 @@ personal-site/
 │   ├── terraform-setup.md   # Infrastructure setup guide
 │   ├── analytics-setup.md   # Analytics implementation guide
 │   └── DEPLOYMENT.md        # Deployment instructions
-├── index.html               # Main website file
-├── about.html              # About page
-├── projects.html           # Projects showcase
-├── blog.html              # Blog integration
-├── privacy-policy.html    # Privacy policy
-├── styles.css             # CSS styling
-├── script.js              # JavaScript functionality
-├── profile.jpeg           # Profile photo (300x300px)
-├── cv.pdf                # Resume/CV file
-└── README.md             # This documentation
+└── README.md                # This documentation
 ```
 
 ## 💰 Cost Optimization
@@ -142,7 +146,7 @@ git clone https://github.com/your-username/personal-site.git
 cd personal-site
 
 # Open in browser for local testing
-open index.html
+open frontend/index.html
 
 # Deploy infrastructure (requires AWS credentials)
 cd terraform

@@ -61,16 +61,7 @@ jobs:
         cd terraform
         BUCKET=$(terraform output -raw s3_bucket)
         cd ..
-        aws s3 sync . s3://$BUCKET \
-          --exclude "terraform/*" \
-          --exclude "docs/*" \
-          --exclude ".terraform/*" \
-          --exclude ".git/*" \
-          --exclude ".github/*" \
-          --exclude "*.md" \
-          --exclude "*.gitignore" \
-          --exclude "copy-index.html." \
-          --delete
+        aws s3 sync frontend/ s3://$BUCKET --delete
     
     - name: Invalidate CloudFront
       run: |
