@@ -177,7 +177,7 @@ I continuously enhance this project by:
 I'm always open to feedback and collaboration opportunities!
 
 - **Website**: [https://fidelis.fozdigitalz.com](https://fidelis.fozdigitalz.com)
-- **LinkedIn**: [Connect with me](https://linkedin.com/in/your-profile)
+- **LinkedIn**: [Connect with me](https://www.linkedin.com/in/fidelis-ikoroje/)
 - **GitHub**: [Follow my projects](https://github.com/Fidelisesq)
 
 ## 📄 License
