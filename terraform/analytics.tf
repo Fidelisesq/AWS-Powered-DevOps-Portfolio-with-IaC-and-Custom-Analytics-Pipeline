@@ -21,6 +21,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "logs" {
   rule {
     id     = "delete_old_logs"
     status = "Enabled"
+    filter {
+      prefix = "access-logs/"
+    }
     expiration {
       days = 90
     }
@@ -254,6 +257,9 @@ resource "aws_s3_bucket_lifecycle_configuration" "athena_results" {
   rule {
     id     = "delete_old_results"
     status = "Enabled"
+    filter {
+      prefix = ""
+    }
     expiration {
       days = 30
     }
