@@ -132,9 +132,67 @@ function initMobileNav() {
     }
 }
 
+// Back to Top Button functionality
+function initBackToTop() {
+    const backToTopBtn = document.getElementById('back-to-top');
+    
+    if (backToTopBtn) {
+        // Show/hide button based on scroll position
+        window.addEventListener('scroll', function() {
+            if (window.pageYOffset > 300) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        // Smooth scroll to top when clicked
+        backToTopBtn.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+    }
+}
+
+// Enhanced scroll animations with Intersection Observer
+function initScrollAnimations() {
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+        return; // Skip animations if user prefers reduced motion
+    }
+    
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver(function(entries) {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animate');
+                // Optional: unobserve after animation to improve performance
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+    
+    // Observe elements for scroll animations
+    const animateElements = document.querySelectorAll('.animate-tag, .animate-card');
+    animateElements.forEach(element => {
+        element.classList.add('scroll-animate');
+        observer.observe(element);
+    });
+}
+
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     initMobileNav();
+    initBackToTop();
+    initScrollAnimations();
     
     // Ensure project links are not modified by any other code
     const projectLinks = document.querySelectorAll('.project-link');
