@@ -1,3 +1,7 @@
+// Test if JavaScript is loading
+console.log('🚀 Script.js is loading!');
+alert('JavaScript is working! Check console for more logs.');
+
 // Smooth scrolling for navigation links with custom speed
 function initSmoothScrolling() {
     console.log('Initializing smooth scrolling...'); // Debug log
