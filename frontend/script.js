@@ -1,18 +1,43 @@
-// Smooth scrolling for navigation links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-        e.preventDefault();
-        const targetId = this.getAttribute('href');
-        const target = document.querySelector(targetId);
-        console.log('Smooth scroll clicked:', targetId, 'Target found:', !!target); // Debug log
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
-        }
+// Smooth scrolling for navigation links with custom speed
+function initSmoothScrolling() {
+    console.log('Initializing smooth scrolling...'); // Debug log
+    
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            const target = document.querySelector(targetId);
+            console.log('Smooth scroll clicked:', targetId, 'Target found:', !!target); // Debug log
+            
+            if (target) {
+                // Custom smooth scroll with slower speed
+                const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - 80;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 1200; // 1.2 seconds (slower)
+                let start = null;
+                
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const run = ease(timeElapsed, startPosition, distance, duration);
+                    window.scrollTo(0, run);
+                    if (timeElapsed < duration) requestAnimationFrame(animation);
+                }
+                
+                // Easing function for smooth animation
+                function ease(t, b, c, d) {
+                    t /= d / 2;
+                    if (t < 1) return c / 2 * t * t + b;
+                    t--;
+                    return -c / 2 * (t * (t - 2) - 1) + b;
+                }
+                
+                requestAnimationFrame(animation);
+            }
+        });
     });
-});
+}
 
 // CV Modal functionality
 const cvModal = document.getElementById('cv-modal');
@@ -139,53 +164,11 @@ function initBackToTop() {
     }
 }
 
-// Enhanced scroll animations with Intersection Observer
+// Simple and reliable scroll animations
 function initScrollAnimations() {
     console.log('Initializing scroll animations...'); // Debug log
     
-    // Check if user prefers reduced motion
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    console.log('Prefers reduced motion:', prefersReducedMotion); // Debug log
-    
-    if (prefersReducedMotion) {
-        // If reduced motion is preferred, show all elements immediately
-        const animateElements = document.querySelectorAll('.animate-tag, .animate-card');
-        animateElements.forEach(element => {
-            element.classList.add('animate');
-        });
-        return;
-    }
-    
-    // Check if IntersectionObserver is supported
-    if (!('IntersectionObserver' in window)) {
-        console.log('IntersectionObserver not supported, using fallback'); // Debug log
-        // Fallback: show all animations immediately
-        const animateElements = document.querySelectorAll('.animate-tag, .animate-card');
-        animateElements.forEach(element => {
-            element.classList.add('animate');
-        });
-        return;
-    }
-    
-    const observerOptions = {
-        threshold: 0.1,
-        rootMargin: '0px 0px -50px 0px'
-    };
-    
-    const observer = new IntersectionObserver(function(entries) {
-        console.log('Observer triggered with', entries.length, 'entries'); // Debug log
-        entries.forEach(entry => {
-            console.log('Element intersecting:', entry.isIntersecting, entry.target.className); // Debug log
-            if (entry.isIntersecting) {
-                entry.target.classList.add('animate');
-                console.log('Added animate class to:', entry.target.className); // Debug log
-                // Unobserve after animation to improve performance
-                observer.unobserve(entry.target);
-            }
-        });
-    }, observerOptions);
-    
-    // Observe elements for scroll animations
+    // Find all elements to animate
     const animateElements = document.querySelectorAll('.animate-tag, .animate-card');
     console.log('Found elements to animate:', animateElements.length); // Debug log
     
@@ -194,27 +177,68 @@ function initScrollAnimations() {
         return;
     }
     
-    animateElements.forEach((element, index) => {
-        console.log('Setting up element:', index, element.className, element.tagName); // Debug log
+    // Check if user prefers reduced motion
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    if (prefersReducedMotion) {
+        // Show all elements immediately
+        animateElements.forEach(element => {
+            element.classList.add('animate');
+        });
+        console.log('Reduced motion preferred - showing all elements immediately');
+        return;
+    }
+    
+    // Use Intersection Observer if supported, otherwise fallback to scroll event
+    if ('IntersectionObserver' in window) {
+        console.log('Using IntersectionObserver for animations');
         
-        // Reset any existing styles and ensure elements start hidden
-        element.style.opacity = '0';
-        if (element.classList.contains('animate-tag')) {
-            element.style.transform = 'translateX(-30px)';
-        } else {
-            element.style.transform = 'translateY(30px)';
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    console.log('Element came into view:', entry.target.className);
+                    entry.target.classList.add('animate');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+        
+        animateElements.forEach(element => {
+            observer.observe(element);
+        });
+    } else {
+        console.log('Using scroll event fallback for animations');
+        
+        function checkScroll() {
+            animateElements.forEach(element => {
+                if (!element.classList.contains('animate')) {
+                    const elementTop = element.getBoundingClientRect().top;
+                    const elementVisible = 150;
+                    
+                    if (elementTop < window.innerHeight - elementVisible) {
+                        element.classList.add('animate');
+                        console.log('Element animated via scroll:', element.className);
+                    }
+                }
+            });
         }
         
-        observer.observe(element);
-        console.log('Now observing element:', index); // Debug log
-    });
+        window.addEventListener('scroll', checkScroll);
+        checkScroll(); // Check on load
+    }
     
-    console.log('Scroll animations setup complete'); // Debug log
+    console.log('Scroll animations setup complete');
 }
 
 // Initialize when page loads
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM loaded, initializing...'); // Debug log
+    
+    // Initialize all features
+    initSmoothScrolling();
     initMobileNav();
     initBackToTop();
     
@@ -229,4 +253,6 @@ document.addEventListener('DOMContentLoaded', function() {
         // Preserve the original href attribute
         link.setAttribute('data-original-href', link.href);
     });
+    
+    console.log('All initialization complete');
 });
