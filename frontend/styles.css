@@ -1070,6 +1070,57 @@ section h2 {
     padding: 2rem;
 }
 
+/* Skeleton Loading */
+.skeleton-card {
+    background: #2d2d2d;
+    border-radius: 10px;
+    padding: 1.5rem;
+    border: 1px solid #404040;
+}
+
+.skeleton-header {
+    margin-bottom: 1rem;
+}
+
+.skeleton-line {
+    height: 14px;
+    background: #404040;
+    border-radius: 4px;
+    margin-bottom: 0.75rem;
+    animation: shimmer 1.5s infinite ease-in-out;
+}
+
+.skeleton-line.wide {
+    width: 100%;
+}
+
+.skeleton-line.medium {
+    width: 75%;
+}
+
+.skeleton-line.short {
+    width: 40%;
+}
+
+.skeleton-tags {
+    display: flex;
+    gap: 0.5rem;
+    margin-top: 1rem;
+}
+
+.skeleton-tag {
+    width: 60px;
+    height: 24px;
+    background: #404040;
+    border-radius: 12px;
+    animation: shimmer 1.5s infinite ease-in-out;
+}
+
+@keyframes shimmer {
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.8; }
+}
+
 /* About Page Styles */
 .about-hero {
     background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
