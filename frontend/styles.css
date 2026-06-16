@@ -541,6 +541,25 @@ section h2 {
     gap: 1.5rem;
 }
 
+/* Booking CTA */
+.booking-cta {
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    background: rgba(52, 152, 219, 0.1);
+    border-radius: 12px;
+    border: 1px solid rgba(52, 152, 219, 0.2);
+}
+
+.booking-cta p {
+    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    color: #b0b0b0;
+}
+
+.booking-cta .btn-primary {
+    cursor: pointer;
+}
+
 .social-link {
     display: flex;
     align-items: center;
